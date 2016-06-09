@@ -2,11 +2,12 @@ package com.edx.shell.android.androidchat.login;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
-    LoginView view;
-    LoginInteractor interactor;
+    private LoginView view;
+    private LoginInteractor interactor;
 
     public LoginPresenterImpl(LoginView view) {
         this.view = view;
+        interactor = new LoginInteractorImpl();
     }
 
     @Override
