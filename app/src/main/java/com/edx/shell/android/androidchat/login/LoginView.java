@@ -2,7 +2,7 @@ package com.edx.shell.android.androidchat.login;
 
 public interface LoginView {
     void enableInputs();
-    void diableInputs();
+    void disableInputs();
     void showProgress();
     void hideProgress();
 
