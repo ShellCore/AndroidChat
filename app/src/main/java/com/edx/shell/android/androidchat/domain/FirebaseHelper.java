@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat;
+package com.edx.shell.android.androidchat.domain;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;

@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat;
+package com.edx.shell.android.androidchat.login;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import com.edx.shell.android.androidchat.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
