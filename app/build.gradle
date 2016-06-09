@@ -39,4 +39,7 @@ dependencies {
 
     // Biblioteca Butterknife
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    // Biblioteca EventBus
+    compile 'de.greenrobot:eventbus:2.4.1'
 }
