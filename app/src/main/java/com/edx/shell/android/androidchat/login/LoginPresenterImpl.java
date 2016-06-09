@@ -1,18 +1,32 @@
 package com.edx.shell.android.androidchat.login;
 
+import android.util.Log;
+
+import com.edx.shell.android.androidchat.lib.EventBus;
+import com.edx.shell.android.androidchat.lib.GreenRobotEventBus;
+import com.edx.shell.android.androidchat.login.events.LoginEvent;
+
 public class LoginPresenterImpl implements LoginPresenter {
 
+    private EventBus eventBus;
     private LoginView view;
     private LoginInteractor interactor;
 
     public LoginPresenterImpl(LoginView view) {
         this.view = view;
         interactor = new LoginInteractorImpl();
+        eventBus = GreenRobotEventBus.getInstance();
+    }
+
+    @Override
+    public void onCreate() {
+        eventBus.register(this);
     }
 
     @Override
     public void onDestroy() {
         view = null;
+        eventBus.unregister(this);
     }
 
     @Override
@@ -45,14 +59,41 @@ public class LoginPresenterImpl implements LoginPresenter {
         interactor.doSignup(email, pass);
     }
 
-    private void onSigninSucess() {
+    @Override
+    public void onEventMainThread(LoginEvent loginEvent) {
+        switch (loginEvent.getEventType()) {
+            case LoginEvent.ON_SIGNIN_SUCCESS:
+                onSigninSuccess();
+                break;
+            case LoginEvent.ON_SIGNUP_SUCCESS:
+                onSignupSuccess();
+                break;
+            case LoginEvent.ON_SIGNIN_ERROR:
+                onSigninError(loginEvent.getErrorMessage());
+                break;
+            case LoginEvent.ON_SIGNUP_ERROR:
+                onSignupError(loginEvent.getErrorMessage());
+                break;
+            case LoginEvent.ON_FAILED_TO_RECOVER_SESSION:
+                onFailedToRecoverySession();
+        }
+    }
+
+    private void onFailedToRecoverySession() {
+        if (view != null) {
+            view.hideProgress();
+            view.enableInputs();
+        }
+        Log.d("LoginPresenterImpl", "onFailedToRecoverySession");
+    }
+
+    private void onSigninSuccess() {
         if (view != null) {
             view.navigateToMainScreen();
         }
-
     }
 
-    private void onSignupSucess() {
+    private void onSignupSuccess() {
         if (view != null) {
             view.newUserSuccess();
         }
