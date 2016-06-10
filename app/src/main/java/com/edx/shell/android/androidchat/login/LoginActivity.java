@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.btn_signin)
     @Override
     public void handleSignin() {
+        tilPass.setError(null);
         loginPresenter.validateLogin(edtEmail.getText().toString(),
                 edtPass.getText().toString());
     }

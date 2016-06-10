@@ -1,5 +1,6 @@
 package com.edx.shell.android.androidchat.domain;
 
+import com.edx.shell.android.androidchat.entities.User;
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -150,7 +151,7 @@ public class FirebaseHelper {
      * Función para cerrar sesión
      */
     public void signoff() {
-        notifyContactsOfConnectionChange(false, true);
+        notifyContactsOfConnectionChange(User.OFFLINE, true);
     }
 
     /**

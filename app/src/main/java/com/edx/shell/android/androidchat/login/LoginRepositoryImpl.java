@@ -1,29 +1,80 @@
 package com.edx.shell.android.androidchat.login;
 
-import android.util.Log;
-
 import com.edx.shell.android.androidchat.domain.FirebaseHelper;
+import com.edx.shell.android.androidchat.entities.User;
 import com.edx.shell.android.androidchat.lib.EventBus;
 import com.edx.shell.android.androidchat.lib.GreenRobotEventBus;
 import com.edx.shell.android.androidchat.login.events.LoginEvent;
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Map;
 
 public class LoginRepositoryImpl implements LoginRepository {
+
+    private Firebase dataReference;
+    private Firebase myUserReference;
 
     private FirebaseHelper helper;
 
     public LoginRepositoryImpl() {
-        this.helper = FirebaseHelper.getInstance();
+        helper = FirebaseHelper.getInstance();
+        dataReference = helper.getDataReference();
+        myUserReference = helper.getMyUserReference();
     }
 
     @Override
     public void signin(String email, String pass) {
-        postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
+        dataReference.authWithPassword(email, pass, new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                myUserReference = helper.getMyUserReference();
+                myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User currentUser = dataSnapshot.getValue(User.class);
+
+                        if (currentUser == null) {
+                            String email = helper.getAuthUserEmail();
+                            if (email != null) {
+                                currentUser = new User();
+                                myUserReference.setValue(currentUser);
+                            }
+                        }
+                        helper.changeUserConnectionStatus(User.ONLINE);
+                        postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                    }
+                });
+            }
+
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                postEvent(LoginEvent.ON_SIGNIN_ERROR, firebaseError.getMessage());
+            }
+        });
     }
 
     @Override
-    public void signup(String email, String pass) {
-        postEvent(LoginEvent.ON_SIGNUP_SUCCESS);
+    public void signup(final String email, final String pass) {
+        dataReference.createUser(email, pass, new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> stringObjectMap) {
+                postEvent(LoginEvent.ON_SIGNUP_SUCCESS);
+                signin(email, pass);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                postEvent(LoginEvent.ON_SIGNUP_ERROR, firebaseError.getMessage());
+            }
+        });
     }
 
     @Override
