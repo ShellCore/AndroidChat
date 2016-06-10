@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat.contactList;
+package com.edx.shell.android.androidchat.contactList.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

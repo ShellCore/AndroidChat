@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".contactList.ContactListActivity"
+            android:name=".contactList.ui.ContactListActivity"
             android:label="@string/contactList.title"
             android:theme="@style/AppTheme.NoActionbar"></activity>
     </application>
