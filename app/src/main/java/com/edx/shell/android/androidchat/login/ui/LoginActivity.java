@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat.login;
+package com.edx.shell.android.androidchat.login.ui;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 
 import com.edx.shell.android.androidchat.R;
 import com.edx.shell.android.androidchat.contactList.ContactListActivity;
+import com.edx.shell.android.androidchat.login.LoginPresenter;
+import com.edx.shell.android.androidchat.login.LoginPresenterImpl;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

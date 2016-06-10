@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat.login;
+package com.edx.shell.android.androidchat.login.ui;
 
 public interface LoginView {
     void enableInputs();

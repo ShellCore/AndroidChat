@@ -1,10 +1,9 @@
 package com.edx.shell.android.androidchat.login;
 
-import android.util.Log;
-
 import com.edx.shell.android.androidchat.lib.EventBus;
 import com.edx.shell.android.androidchat.lib.GreenRobotEventBus;
 import com.edx.shell.android.androidchat.login.events.LoginEvent;
+import com.edx.shell.android.androidchat.login.ui.LoginView;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
@@ -84,7 +83,6 @@ public class LoginPresenterImpl implements LoginPresenter {
             view.hideProgress();
             view.enableInputs();
         }
-        Log.d("LoginPresenterImpl", "onFailedToRecoverySession");
     }
 
     private void onSigninSuccess() {
