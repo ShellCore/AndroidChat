@@ -1,9 +1,9 @@
-package com.edx.shell.android.androidchat.contactList.ui.adapters;
+package com.edx.shell.android.androidchat.lib;
 
 import android.widget.ImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public interface ImageLoading {
+public interface ImageLoader {
     void load(ImageView imgAvatar, String url);
 }
