@@ -11,4 +11,10 @@
 
     <string name="contactList.title">Contactos</string>
     <string name="contactList.menu.action.signoff">Cerrar sesión</string>
+
+    <string name="addContact.message.title">Agregar contacto</string>
+    <string name="addContact.message.add">Aceptar</string>
+    <string name="addContact.message.cancel">Cancelar</string>
+    <string name="addContact.message.contactAdded">Contacto agregado exitosamente</string>
+    <string name="addContact.error.message">Imposible agregar, usuario no existente</string>
 </resources>

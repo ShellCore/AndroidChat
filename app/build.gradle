@@ -49,4 +49,5 @@ dependencies {
     // Biblioteca para cargar imágenes desde internet
     compile "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
 
+    compile 'com.android.support:support-v4:23.4.0'
 }
