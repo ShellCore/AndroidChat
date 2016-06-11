@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.edx.shell.android.androidchat.R;
-import com.edx.shell.android.androidchat.contactList.ContactListActivity;
+import com.edx.shell.android.androidchat.contactList.ui.ContactListActivity;
 import com.edx.shell.android.androidchat.login.LoginPresenter;
 import com.edx.shell.android.androidchat.login.LoginPresenterImpl;
 
