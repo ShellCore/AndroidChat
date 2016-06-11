@@ -17,6 +17,11 @@ public class User {
     public User() {
     }
 
+    public User(String email, boolean online) {
+        this.email = email;
+        this.online = online;
+    }
+
     public String getEmail() {
         return email;
     }
