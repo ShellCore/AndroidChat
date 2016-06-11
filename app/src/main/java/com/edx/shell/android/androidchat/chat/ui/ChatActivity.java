@@ -1,4 +1,4 @@
-package com.edx.shell.android.androidchat.chat;
+package com.edx.shell.android.androidchat.chat.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
