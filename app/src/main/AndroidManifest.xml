@@ -16,12 +16,16 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".contactList.ui.ContactListActivity"
             android:label="@string/contactList.title"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".chat.ChatActivity"
             android:theme="@style/AppTheme.NoActionbar" />
     </application>
 
