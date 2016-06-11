@@ -2,9 +2,6 @@ package com.edx.shell.android.androidchat.entities;
 
 import java.util.Map;
 
-/**
- * Created by Praxis on 10/06/2016.
- */
 public class User {
 
     public static final boolean ONLINE = true;
@@ -44,5 +41,17 @@ public class User {
 
     public void setContacts(Map<String, Boolean> contacts) {
         this.contacts = contacts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        boolean equal = false;
+
+        if (o instanceof User) {
+            User user = (User) o;
+            equal = email.equals(user.getEmail());
+        }
+
+        return equal;
     }
 }
