@@ -1,7 +1,7 @@
 package com.edx.shell.android.androidchat.chat;
 
 public interface ChatRepository {
-    void sendMessage();
+    void sendMessage(String msg);
     void setRecipient(String recipient);
 
     void subscribe();

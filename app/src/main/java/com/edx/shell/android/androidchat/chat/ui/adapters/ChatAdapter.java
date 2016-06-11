@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.edx.shell.android.androidchat.R;
 import com.edx.shell.android.androidchat.entities.ChatMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;

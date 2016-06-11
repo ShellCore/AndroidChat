@@ -6,6 +6,8 @@ import com.edx.shell.android.androidchat.entities.User;
 import com.edx.shell.android.androidchat.lib.EventBus;
 import com.edx.shell.android.androidchat.lib.GreenRobotEventBus;
 
+import org.greenrobot.eventbus.Subscribe;
+
 public class ChatPresenterImpl implements ChatPresenter {
     private EventBus eventBus;
     private ChatView view;
@@ -49,6 +51,7 @@ public class ChatPresenterImpl implements ChatPresenter {
     }
 
     @Override
+    @Subscribe
     public void onEventMainThread(ChatEvent event) {
         if (view != null) {
             view.onMessageReceived(event.getMessage());

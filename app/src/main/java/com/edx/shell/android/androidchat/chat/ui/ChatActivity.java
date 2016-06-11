@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity implements ChatView {
@@ -47,8 +49,8 @@ public class ChatActivity extends AppCompatActivity implements ChatView {
     RecyclerView recChat;
     @Bind(R.id.edt_message)
     EditText edtMessage;
-    @Bind(R.id.btn_send)
-    ImageButton btnSend;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,8 @@ public class ChatActivity extends AppCompatActivity implements ChatView {
 
         ImageLoader imageLoader = new GlideImageLoader(getApplicationContext());
         imageLoader.load(imgAvatar, AvatarHelper.getAvatarUrl(recipient));
+
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -112,5 +116,11 @@ public class ChatActivity extends AppCompatActivity implements ChatView {
     public void onMessageReceived(ChatMessage msg) {
         adapter.add(msg);
         recChat.scrollToPosition(adapter.getItemCount() - 1);
+    }
+
+    @OnClick(R.id.btn_send)
+    public void sendMessage() {
+        presenter.sendMessage(edtMessage.getText().toString());
+        edtMessage.setText("");
     }
 }
