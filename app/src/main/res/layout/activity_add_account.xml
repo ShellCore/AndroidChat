@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
-    tools:context="com.edx.shell.android.androidchat.newAccount.AddAccountActivity">
+    tools:context=".newAccount.ui.AddAccountActivity">
 
     <LinearLayout
         android:id="@+id/dummy_view"
@@ -52,8 +52,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/ntn_create"
+            android:id="@+id/btn_create"
             android:text="@string/login.btn.signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_ccancel"
+            android:text="@string/signup.btn.cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
