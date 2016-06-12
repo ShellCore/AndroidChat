@@ -3,7 +3,7 @@
     <string name="login.hint.email">Correo electrónico</string>
     <string name="login.hint.pass">Contraseña</string>
     <string name="login.btn.signin">Iniciar Sesión</string>
-    <string name="login.btn.signup">Crear Cuenta</string>
+    <string name="login.btn.signup">Ir a Crear Cuenta</string>
 
     <string name="login.error.signin">Imposible iniciar sesión (%s)</string>
     <string name="login.error.signup">Imposible registrar nuevo usuario (%s)</string>
@@ -17,5 +17,6 @@
     <string name="addContact.message.cancel">Cancelar</string>
     <string name="addContact.message.contactAdded">Contacto agregado exitosamente</string>
     <string name="addContact.error.message">Imposible agregar, usuario no existente</string>
+    <string name="signup.btn.signup">Crear Cuenta</string>
     <string name="signup.btn.cancel">Cancelar</string>
 </resources>

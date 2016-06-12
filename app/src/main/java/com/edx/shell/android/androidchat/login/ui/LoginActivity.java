@@ -16,6 +16,7 @@ import com.edx.shell.android.androidchat.R;
 import com.edx.shell.android.androidchat.contactList.ui.ContactListActivity;
 import com.edx.shell.android.androidchat.login.LoginPresenter;
 import com.edx.shell.android.androidchat.login.LoginPresenterImpl;
+import com.edx.shell.android.androidchat.newAccount.ui.AddAccountActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -102,8 +103,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.btn_signup)
     @Override
     public void handleSignup() {
-        loginPresenter.registerNewUser(edtEmail.getText().toString(),
-                edtPass.getText().toString());
+        startActivity(new Intent(this, AddAccountActivity.class));
     }
 
     @Override

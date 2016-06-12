@@ -5,6 +5,8 @@ import com.edx.shell.android.androidchat.lib.GreenRobotEventBus;
 import com.edx.shell.android.androidchat.newAccount.events.AddAccountEvent;
 import com.edx.shell.android.androidchat.newAccount.ui.AddAccountView;
 
+import org.greenrobot.eventbus.Subscribe;
+
 public class AddAccountPresenterImpl implements AddAccountPresenter {
 
     private EventBus eventBus;
@@ -39,6 +41,7 @@ public class AddAccountPresenterImpl implements AddAccountPresenter {
     }
 
     @Override
+    @Subscribe
     public void onEventMainThread(AddAccountEvent addAccountEvent) {
         switch (addAccountEvent.getEventType()) {
             case AddAccountEvent.ON_SIGNIN_SUCCESS:
